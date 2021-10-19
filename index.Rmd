@@ -37,6 +37,11 @@ class: title-slide, middle, center
 ### Academic Year 2021-2022
 
 ---
+class: center, middle, inverse
+
+# R project and R packages
+
+---
 
 ## The R project
 
@@ -84,6 +89,8 @@ class: title-slide, middle, center
 ## Running R in its default GUI
 
 * You can run R using the default graphical user interface (GUI). 
+
+<!-- TODO: Update figure with Windows GUI -->
 
 ![:scale 90%](img/RdefaultGUI.png)
 
@@ -159,6 +166,8 @@ class: title-slide, middle, center
     > install_github("nytimes/covid-19-data")
     </pre>
 
+<!-- NOTE: BiocManager::install() actually automatically installs packages from CRAN, Bioc and GitHub! -->
+
 ---
 
 ## Session information
@@ -187,6 +196,11 @@ class: title-slide, middle, center
 * R and its packages are under continuous development. To facilitate error
   reporting and reproducibility we should keep track of the R and package
   versions being used.
+
+---
+class: center, middle, inverse
+
+# Data types and indexing
 
 ---
 
@@ -286,6 +300,9 @@ class: title-slide, middle, center
     </pre>
 * In R, single values are also vectors of length 1.
 
+<!-- NOTE: range different from python (half open), in R both numbers are part of interval -->
+<!-- TODO: Vectors always contain same type of data types, maybe change a little bit these slides -->
+
 ---
 
 ## Vectors
@@ -364,6 +381,9 @@ class: title-slide, middle, center
   > dim(m)
   [1] 3 3
   </pre>
+  
+
+<!-- TODO: Clarify access of matrix/data.frame elements where [r,c] -->
 
 ---
 
@@ -453,6 +473,11 @@ class: title-slide, middle, center
   &nbsp;&nbsp;
 * Data frames are rectangular objects like matrices, with rows and columns, but
   different columns can store different data types.
+
+---
+class: center, middle, inverse
+
+# Subsetting
 
 ---
 
