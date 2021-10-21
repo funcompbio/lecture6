@@ -254,7 +254,8 @@ Operator | Description
 
 ## Basic (atomic) data types
 
-* There are [six basic data types](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Vector-objects) in R, sometimes referred to as _atomic_, from which we highlight the following four:
+* There are [six basic data types](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Vector-objects) 
+in R, sometimes referred to as _atomic_, from which we highlight the following four:
   * _logical_ (`TRUE`, `FALSE`).
   * _integer_ (`1, 2, 3, 4, ..`).
   * _double_ (`1.1, 2.3, 3.1416, ..`).
@@ -324,7 +325,8 @@ can store only one data type.
     </pre>
 * In R, single values are also vectors of length 1.
 
-<!-- NOTE: range different from python (half open), in R both numbers are part of interval -->
+<!-- NOTE: range different from python (half open), in R both numbers are part 
+of interval -->
 
 ---
 
@@ -380,12 +382,60 @@ can store only one data type.
 
 ---
 
+## Encoding vectors as factors
+
+* [Factors](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Factors) 
+are a special class of vectors used to categorize data and store its levels. 
+They are specially useful when the vector contains a limited number of unique 
+values.
+  <pre>
+  > gender <- c("female", "male", "male", "female", "female")
+  > gender_factor <- factor(gender)
+  > gender_factor
+  [1] female male   male   female female
+  Levels: female male
+  </pre>
+* Specific level order can be specified using the `level` argument in `factor()`:
+  <pre>
+  > gender_factor <- factor(gender, levels=c("male", "female"))
+  > gender_factor
+  [1] female male   male   female female
+  Levels: male female
+  </pre>
+
+---
+
+## Encoding vectors as factors
+
+* Elements inside a factor can be accessed using the same bracket notation as
+vectors: 
+  <pre>
+  > gender_factor[3]
+  [1] male
+  Levels: male female
+  </pre>
+
+* Levels can be retrieved using the `level()` function.
+  <pre>
+  > levels(gender_factor)
+  [1] "male"   "female"
+  </pre>
+* Factors can be converted to _character_ or _numeric_ vectors using 
+`as.character()` or `as.numeric()` respectively.
+  <pre>
+  > gender_char <- as.character(gender_factor)
+  > gender_char
+  [1] "female" "male"   "male"   "female" "female"
+  </pre>
+  
+---
+
 ## Matrices
 
 * Matrices can be created with the function `matrix()`, as follows:
   <pre>
   > m <- matrix(1:9, nrow=3)
-  m
+  > m
        [,1] [,2] [,3]
   [1,]    1    4    7
   [2,]    2    5    8

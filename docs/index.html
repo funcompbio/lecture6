@@ -250,7 +250,8 @@ Operator | Description
 
 ## Basic (atomic) data types
 
-* There are [six basic data types](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Vector-objects) in R, sometimes referred to as _atomic_, from which we highlight the following four:
+* There are [six basic data types](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Vector-objects) 
+in R, sometimes referred to as _atomic_, from which we highlight the following four:
   * _logical_ (`TRUE`, `FALSE`).
   * _integer_ (`1, 2, 3, 4, ..`).
   * _double_ (`1.1, 2.3, 3.1416, ..`).
@@ -320,7 +321,8 @@ can store only one data type.
     &lt;/pre&gt;
 * In R, single values are also vectors of length 1.
 
-&lt;!-- NOTE: range different from python (half open), in R both numbers are part of interval --&gt;
+&lt;!-- NOTE: range different from python (half open), in R both numbers are part 
+of interval --&gt;
 
 ---
 
@@ -376,12 +378,60 @@ can store only one data type.
 
 ---
 
+## Encoding vectors as factors
+
+* [Factors](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Factors) 
+are a special class of vectors used to categorize data and store its levels. 
+They are specially useful when the vector contains a limited number of unique 
+values.
+  &lt;pre&gt;
+  &gt; gender &lt;- c(&quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;)
+  &gt; gender_factor &lt;- factor(gender)
+  &gt; gender_factor
+  [1] female male   male   female female
+  Levels: female male
+  &lt;/pre&gt;
+* Specific level order can be specified using the `level` argument in `factor()`:
+  &lt;pre&gt;
+  &gt; gender_factor &lt;- factor(gender, levels=c(&quot;male&quot;, &quot;female&quot;))
+  &gt; gender_factor
+  [1] female male   male   female female
+  Levels: male female
+  &lt;/pre&gt;
+
+---
+
+## Encoding vectors as factors
+
+* Elements inside a factor can be accessed using the same bracket notation as
+vectors: 
+  &lt;pre&gt;
+  &gt; gender_factor[3]
+  [1] male
+  Levels: male female
+  &lt;/pre&gt;
+
+* Levels can be retrieved using the `level()` function.
+  &lt;pre&gt;
+  &gt; levels(gender_factor)
+  [1] &quot;male&quot;   &quot;female&quot;
+  &lt;/pre&gt;
+* Factors can be converted to _character_ or _numeric_ vectors using 
+`as.character()` or `as.numeric()` respectively.
+  &lt;pre&gt;
+  &gt; gender_char &lt;- as.character(gender_factor)
+  &gt; gender_char
+  [1] &quot;female&quot; &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;female&quot;
+  &lt;/pre&gt;
+  
+---
+
 ## Matrices
 
 * Matrices can be created with the function `matrix()`, as follows:
   &lt;pre&gt;
   &gt; m &lt;- matrix(1:9, nrow=3)
-  m
+  &gt; m
        [,1] [,2] [,3]
   [1,]    1    4    7
   [2,]    2    5    8
