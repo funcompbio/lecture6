@@ -90,8 +90,6 @@ class: center, middle, inverse
 
 * You can run R using the default graphical user interface (GUI). 
 
-<!-- TODO: Update figure with Windows GUI -->
-
 ![:scale 90%](img/RdefaultGUI.png)
 
 ---
@@ -165,8 +163,6 @@ class: center, middle, inverse
     > library(remotes) ## install first 'remotes' from CRAN
     > install_github("nytimes/covid-19-data")
     </pre>
-
-<!-- NOTE: BiocManager::install() actually automatically installs packages from CRAN, Bioc and GitHub! -->
 
 ---
 
@@ -325,9 +321,6 @@ can store only one data type.
     [1] 2 4 6
     </pre>
 * In R, single values are also vectors of length 1.
-
-<!-- NOTE: range different from python (half open), in R both numbers are part 
-of interval -->
 
 ---
 
