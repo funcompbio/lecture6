@@ -627,6 +627,19 @@ class: center, middle, inverse
 
 ---
 
+## Concluding remarks (Subsetting)
+
+* Subsetting is a key operation to stratify data (e.g., subgroups of a
+  population, subgroups of patients, etc.).  
+  &nbsp;&nbsp;
+* Logical vectors are a powerful way to do subsetting.  
+  &nbsp;&nbsp;
+* The subsetting operation always returns an object of
+  the same class as the original object from which you
+  _subset_.
+
+---
+
 ## Help and learning resources
 
 * The R software provides different functions to access its manual help pages:
@@ -656,9 +669,25 @@ class: center, middle, inverse
 
 ---
 
-## Concluding remarks (Subsetting & help)
+## Concluding remarks
 
-* Logical vectors are a powerful way to do subsetting  
+* There is a huge amount of freely available learning material about R on the
+  internet.  
   &nbsp;&nbsp;
 * The R programming language has become the standard _de facto_ for data
   analysis in multiple disciplines, including biology.
+
+--
+
+.pull-left[
+![](img/redmonklangrankQ321.png)
+.footnote[
+[RedMonk programming language rankings](https://redmonk.com/sogrady/2021/08/05/language-rankings-6-21)
+]
+]
+.pull-right[
+![](img/rochecompbiojob.jpg)
+.footnote[
+[Roche Job offer for a computational biologist (10/2021)](https://www.roche.com/careers/jobs/jobsearch/job.htm?id=E-202105-113413&locale=en&title=Computational+Biologist)
+]
+]
