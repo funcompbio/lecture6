@@ -24,7 +24,8 @@ class: title-slide, middle, center
 
 # Programming with data: the R language
 
-## Mireia Ramos
+## Robert Castelo & Mireia Ramos
+[robert.castelo@upf.edu](mailto:robert.castelo@upf.edu)
 [mireia.ramos@upf.edu](mailto:mireia.ramos@upf.edu)
 ### Dept. of Experimental and Health Sciences
 ### Universitat Pompeu Fabra
@@ -71,10 +72,9 @@ class: center, middle, inverse
   &nbsp;&nbsp;
 --
 
-* A new stable version is released every year about march/april and development
-  versions are updated on daily basis. Last major release (version 4.0.0) took
-  place on April, 2020.  
-  &nbsp;&nbsp;
+* A new stable version is released every year about March or April and development
+  versions are updated on a daily basis. The last major release (version 4.1.0) took
+  place on April, 2021.
 
 ---
 
@@ -196,7 +196,7 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 
-# Data types and indexing
+# The R language
 
 ---
 
@@ -253,23 +253,47 @@ Operator | Description
 
 * There are [six basic data types](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Vector-objects) 
 in R, sometimes referred to as _atomic_, from which we highlight the following four:
-  * _logical_ (`TRUE`, `FALSE`).
-  * _integer_ (`1, 2, 3, 4, ..`).
-  * _double_ (`1.1, 2.3, 3.1416, ..`).
-  * _character_ (`"A", "B", "C", "Hello World!", ..`).
+  * _logical_: `TRUE`, `FALSE`
+  * _integer_: `1, 2, 3, 4, ..`
+  * _double_: `1.1, 2.3, 3.1416, ..`
+  * _character_: `"A", "B", "C", "Hello World!", ..`
 * The function `typeof()` provides the data type:
   <pre>
   > typeof(TRUE)
   "logical"
   </pre>
+* Unless specified, numbers are _doubles_ by default. 
+  <pre>
+  > typeof(1)
+  [1] "double"
+  > typeof(1L)
+  [1] "integer"
+  </pre>
+
+---
+
+## Object classes
+
 * Objects in R may belong to one or more
   [classes](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Classes),
-  which may coincide with the data type and which we can find out with the
+  which may coincide, or not, with the data type and which we can find out with the
   function `class()`:
   <pre>
   > class(TRUE)
   "logical"
   </pre>
+* Object classes are part of the so-called
+  [object-oriented programming (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming)
+  paradigm, which R offers in three flavors:
+  * S3: interactive, simple and lightweight.
+  * S4: formal and rigorous.
+  * RC: reference classes, departing from the functional programming model of
+    S3 and S4, it enforces function methods to be encapsulated within the class
+    definition.
+* While OOP with R is not the focus of this course, you may consult the
+  [OOP chapter](https://adv-r.hadley.nz/oo.html) from the book
+  ["Advanced R"](https://adv-r.hadley.nz) by [Hadley Wickham](http://hadley.nz)
+  if you are interested.
 
 ---
 
@@ -301,7 +325,8 @@ in R, sometimes referred to as _atomic_, from which we highlight the following f
 ## Vectors
 
 * One of the most basic classes of objects in R are (atomic) _vectors_, which 
-can store only one data type.
+can store only one data type. Single values are also considered vectors of length 1.  
+  &nbsp;&nbsp;
 * Vectors of numbers can be created in a number of different ways:
   * Using the `c()` _combination_ function:
     <pre>
@@ -320,28 +345,18 @@ can store only one data type.
     > seq(2, 7 ,2)
     [1] 2 4 6
     </pre>
-* In R, single values are also vectors of length 1.
 
 ---
 
 ## Vectors
 
-* Unless specified, numbers are _doubles_ by default. 
-  <pre>
-  > typeof(1)
-  [1] "double"
-  > typeof(1L)
-  [1] "integer"
-  > typeof(2:7)
-  [1] "integer"
-  </pre>
 * Logical vectors can be expressed using `T` and `F` as shorthands for `TRUE`
   and `FALSE`:
   <pre>
   > c(T, F, T, F, T, F, T, F)
   [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
   </pre>
-* Character literals are written between double quotes.
+* Vectors of character literals are written using double quotes around their values.
   <pre>
   > c("A", "C", "G", "T", "T", "G", "A", "G")
   [1] "A" "C" "G" "T" "T" "G" "A" "G"
@@ -351,8 +366,8 @@ can store only one data type.
 
 ## Vectors
 
-* Vector positions in R are 1-based, this means, they start at position 1. The
-  function `length()` provides the number of elements of the vector.
+* Vector positions in R are 1-based, this means, .boldface[they start at position 1].
+  The function `length()` provides the number of elements of the vector.
   <pre>
   > v <- 1:3
   > length(v)
@@ -381,18 +396,19 @@ can store only one data type.
 * [Factors](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Factors) 
 are a special class of vectors used to categorize data and store its levels. 
 They are specially useful when the vector contains a limited number of unique 
-values.
+values, technically called .boldface[levels] in this context.
   <pre>
-  > gender <- c("female", "male", "male", "female", "female")
-  > gender_factor <- factor(gender)
-  > gender_factor
+  > sex <- c("female", "male", "male", "female", "female")
+  > sex_factor <- factor(sex)
+  > sex_factor
   [1] female male   male   female female
   Levels: female male
   </pre>
-* Specific level order can be specified using the `level` argument in `factor()`:
+* Levels are alphabetically ordered by default, but that order can be modified
+  using the `level` argument in the call to `factor()`:
   <pre>
-  > gender_factor <- factor(gender, levels=c("male", "female"))
-  > gender_factor
+  > sex_factor <- factor(sex, levels=c("male", "female"))
+  > sex_factor
   [1] female male   male   female female
   Levels: male female
   </pre>
@@ -402,31 +418,33 @@ values.
 ## Encoding vectors as factors
 
 * Elements inside a factor can be accessed using the same bracket notation as
-vectors: 
+  vectors: 
   <pre>
-  > gender_factor[3]
+  > sex_factor[3]
   [1] male
   Levels: male female
   </pre>
-
 * Levels can be retrieved using the `level()` function.
   <pre>
-  > levels(gender_factor)
+  > levels(sex_factor)
   [1] "male"   "female"
   </pre>
-* Factors can be converted to _character_ or _numeric_ vectors using 
-`as.character()` or `as.numeric()` respectively.
+* Importantly, a factor can be converted into a _numeric_ vector
+  of integer values, according to the order of its levels.
   <pre>
-  > gender_char <- as.character(gender_factor)
-  > gender_char
-  [1] "female" "male"   "male"   "female" "female"
+  > sex_factor
+  [1] female male   male   female female
+  Levels: male female
+  > as.numeric(sex_factor)
+  [1] 2 1 1 2 2
   </pre>
   
 ---
 
 ## Matrices
 
-* Matrices can be created with the function `matrix()`, as follows:
+* Matrices can be created with the function `matrix()` from a vector, filling
+  cells by columns, as follows:
   <pre>
   > m <- matrix(1:9, nrow=3)
   > m
@@ -435,7 +453,6 @@ vectors:
   [2,]    2    5    8
   [3,]    3    6    9
   </pre>
-* `matrix()` fills matrices by column (default).
 * Matrices, like vectors, can store only one single data type.
   <pre>
   > typeof(m)
