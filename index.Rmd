@@ -24,10 +24,9 @@ class: title-slide, middle, center
 
 # Programming with data: the R language
 
-## Robert Castelo & Mireia Ramos
+## Robert Castelo
 [robert.castelo@upf.edu](mailto:robert.castelo@upf.edu)
-[mireia.ramos@upf.edu](mailto:mireia.ramos@upf.edu)
-### Dept. of Experimental and Health Sciences
+### Dept. of Medicine and Life Sciences
 ### Universitat Pompeu Fabra
 
 <br>
@@ -35,7 +34,7 @@ class: title-slide, middle, center
 ## Fundamentals of Computational Biology
 ### BSc on Human Biology
 ### UPF School of Health and Life Sciences
-### Academic Year 2021-2022
+### Academic Year 2023-2024
 
 ---
 class: center, middle, inverse
@@ -72,9 +71,9 @@ class: center, middle, inverse
   &nbsp;&nbsp;
 --
 
-* A new stable version is released every year about March or April and development
-  versions are updated on a daily basis. The last major release (version 4.1.0) took
-  place on April, 2021.
+* A new stable version is released every year on April and development versions
+  are updated on a daily basis. The last major release (version 4.3.0) took
+  place on April, 2023.
 
 ---
 
@@ -174,7 +173,7 @@ class: center, middle, inverse
   &nbsp;&nbsp;
 * The function `sessionInfo()` reports versions of R and currently loaded and
   attached packages:
-  ![:scale 90%](img/sessioninfo.png)
+  ![:scale 100%](img/sessioninfo.png)
 
 ---
 
@@ -230,22 +229,24 @@ class: small-table
 
 * Arithmetic operators:
 
-Operator |	Description
----------|--------------
-`+`      | addition
-`-`      | subtraction
-`*`      | multiplication
-`/`	     | division
-`^` or `**`	| exponentiation
+|   Operator           |  Example  |  Result |
+|--------------------- | :-------: | :-----: |
+| addition             |   2 + 2   |    4    |
+| subtraction          |   3 - 2   |    1    |
+| multiplication       |   3 * 2   |    6    |
+| division (quotient)  |   6 / 3   |    2    |
+| division (remainder) |   6 %% 4  |    2    |
 
-* Logical operators:
+* Comparison operators:
 
-Operator | Description
----------|-----------------
-`>`	     | greater than
-`>=`	   | greater than or equal to
-`==`	   | exactly equal to
-`!=`     | not equal to
+|    Description        |  Operator |
+|---------------------- | :-------: |
+|     equality          |    ==     |
+|    inequality         |    !=     |
+|    greater than       |    >      |
+|    smaller than       |    <      |
+| greater or equal than |    >=     |
+| smaller or equal than |    <=     |
 
 ---
 
@@ -405,7 +406,7 @@ values, technically called .boldface[levels] in this context.
   Levels: female male
   </pre>
 * Levels are alphabetically ordered by default, but that order can be modified
-  using the `level` argument in the call to `factor()`:
+  using the `levels` argument in the call to `factor()`:
   <pre>
   > sex_factor <- factor(sex, levels=c("male", "female"))
   > sex_factor
@@ -477,11 +478,11 @@ values, technically called .boldface[levels] in this context.
   > l <- list(1, TRUE, "World")
   > l
   [[1]]
-  [1] 1
-  
+  [1] 1  
+  &nbsp;&nbsp;
   [[2]]
-  [1] TRUE
-  
+  [1] TRUE  
+  &nbsp;&nbsp;
   [[3]]
   [1] "World"
   > length(l)
@@ -662,7 +663,7 @@ class: center, middle, inverse
     [Codeacademy](https://www.codecademy.com/learn/learn-r),
     [Coursera](https://www.coursera.org/learn/r-programming),
     [DataCamp](https://www.datacamp.com/courses/free-introduction-to-r),
-    [edX](https://www.edx.org/course/data-science-r-basics) or
+    [edX](https://www.edx.org/learn/r-programming/harvard-university-data-science-r-basics) or
     [Udemy](https://www.udemy.com/course/r-basics).
   * The online book [R for Data Science](https://r4ds.had.co.nz) by
   [Hadley Wickham](http://hadley.nz).
@@ -680,14 +681,14 @@ class: center, middle, inverse
 --
 
 .pull-left[
-![](img/redmonklangrankQ321.png)
+![](img/redmonklangrankQ123.png)
 .footnote[
-[RedMonk programming language rankings](https://redmonk.com/sogrady/2021/08/05/language-rankings-6-21)
+[RedMonk programming language rankings](https://redmonk.com/sogrady/2023/05/16/language-rankings-1-23)
 ]
 ]
 .pull-right[
-![](img/rochecompbiojob.jpg)
+![](img/compbiojob.png)
 .footnote[
-[Roche Job offer for a computational biologist (10/2021)](https://www.roche.com/careers/jobs/jobsearch/job.htm?id=E-202105-113413&locale=en&title=Computational+Biologist)
+[Job offer for a computational biologist](https://www.indeed.com/jobs?q=Python+Unix+Linux+R&from=mobRdr&utm_source=%2Fm%2F&utm_medium=redir&utm_campaign=dt&vjk=998726a0ded4297f)
 ]
 ]
