@@ -496,18 +496,30 @@ values, technically called .boldface[levels] in this context.
 * List objects typically have named elements, which we can give with the
   function `name()` or at creation time:
   <pre>
-  > l <- list(gene="GAPDH", organism="H.sapiens", chromosome=10)
+  > l <- list(gene="GAPDH", organism="H.sapiens", chromosome=12)
   > l
   $gene
   [1] "GAPDH"
+  &nbsp;&nbsp;
   $organism
   [1] "H.sapiens"
+  &nbsp;&nbsp;
   $chromosome
-  [1] 10
+  [1] 12
   </pre>
-* To access an element of the list we can use either the double-bracket
-  operator `[[` or, if the list elements have names, the dollar `$` operator:
+
+---
+
+## Lists: accessing elements
+
+* To access an element of the list we can use either the double-bracket operator
+  `[[` with a valid index position or, if the list elements has names, the
+  element's name. If the name is made out of letters and numbers only, you can
+  also use the dollar `$` operator. These are all equivalent ways of doing the
+  same job:
   <pre>
+  > l[[1]]
+  [1] "GAPDH"
   > l[["gene"]]
   [1] "GAPDH"
   > l$gene
@@ -516,30 +528,98 @@ values, technically called .boldface[levels] in this context.
 
 ---
 
+## Lists: adding elements
+
+* To add an element to an existing list, you only need to do an assignment on
+  that new element, for instance:
+  <pre>
+  > l$position <- 6534517
+  > l
+  $gene
+  [1] "GAPDH"
+  &nbsp;&nbsp;
+  $organism
+  [1] "H.sapiens"
+  &nbsp;&nbsp;
+  $chromosome
+  [1] 12
+  &nbsp;&nbsp;
+  $position
+  [1] 6534517
+  </pre>
+
+---
+
 ## Data frames
 
 * Data frame objects are like matrices, but different columns may store
-  different types of values.
+  different types of values. We can create a `data.frame` object as follows:
   <pre>
-  > df <- data.frame(gene=c("GAPDH", "FOXP"),
+  > df <- data.frame(gene=c("GAPDH", "FOXP2"),
                        organism=c("H.sapiens", "R.norvegicus"),
-                       chromosome=c(10, 2))
+                       chromosome=c(12, 2),
+                       row.names=c("P04406", "P0CF24"))
   > df
-       gene     organism chromosome
-  1 GAPDH    H.sapiens         10
-  2  FOXP R.norvegicus          2
+            gene     organism chromosome
+  P04406 GAPDH    H.sapiens         12
+  P0CF24 FOXP2 R.norvegicus          2
   > dim(d)
   [1] 2 3
+  > rownames(df)
+  [1] "P04406" "P0CF24"
   </pre>
-* The bracket `[` and dollar `$` operators access respectively elements and
-  columns.
+* However, most of the times, we will obtain a `data.frame` object as a
+  result of a call to the function `read.csv()`, which allows one to read
+  [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) files.
+
+---
+
+## Data frames: accessing rows
+
+* The bracket operator `[` can be used to access rows by setting indices,
+  or row names, in the **first** of the two dimensions, separated by a
+  comma:
   <pre>
   > df[2, ]
-      gene     organism chromosome
-  2 FOXP R.norvegicus          2
+            gene     organism chromosome
+  P0CF24 FOXP2 R.norvegicus          2
+  > df["P0CF24", ]
+            gene     organism chromosome
+  P0CF24 FOXP2 R.norvegicus          2
+  </pre>
+* Note that accessing a whole row always gives a `data.frame` object as
+  a result:
+  <pre>
+  class(df[2, ])
+  [1] "data.frame"
+  </pre>
+
+---
+
+## Data frames: accessing columns
+
+* The bracket operator `[` can be used to access columns by setting indices,
+  or column names, in the **second** of the two dimensions, separated by a
+  comma:
+  <pre>
+  > df[, 2]
+  [1] "H.sapiens"    "R.norvegicus"
+  > df[, "organism"]
+  [1] "H.sapiens"    "R.norvegicus"
+  </pre>
+* Additionally, we can also directly access the column of a `data.frame` object
+  as if it were an element of `list`, using the `$` operator:
+  <pre>
   > df$organism
   [1] "H.sapiens"    "R.norvegicus"
   </pre>
+* Differently to accessing whole rows, accessing whole columns always gives a
+  vector (of the corresponding data type) as a result:
+  <pre>
+  class(df[, 2])
+  [1] "character"
+  </pre>
+
 
 ---
 
@@ -585,9 +665,9 @@ class: center, middle, inverse
 
 ---
 
-## Subsetting
+## Subsetting: matrices
 
-* We can subset rows or columns of matrices and data frames.
+* We can subset rows or columns of matrices:
   <pre>
   > m <- matrix(1:9, nrow=3)
        [,1] [,2] [,3]
@@ -598,15 +678,16 @@ class: center, middle, inverse
        [,1] [,2] [,3]
   [1,]    1    4    7
   [2,]    2    5    8
-  > df[, c("gene", "organism")]
-       gene     organism
-  1 GAPDH    H.sapiens
-  2  FOXP R.norvegicus
+  > m[, 2:3]
+         [,1] [,2]
+  [1,]    4    7
+  [2,]    5    8
+  [3,]    6    9
   </pre>
 
 ---
 
-## Subsetting
+## Subsetting: lists
 
 * We can subset a list using the bracket operator `[`.
   <pre>
@@ -624,6 +705,27 @@ class: center, middle, inverse
   [1] "ACE2"
   $PubMedIDs
   [1] "27217402" "11815627" "19021774"
+  </pre>
+
+---
+
+## Subsetting: data frames
+
+* We can subset a `data.frame` object using the bracket operator `[`.
+  <pre>
+  > df[2, ]
+            gene     organism chromosome
+  P0CF24 FOXP2 R.norvegicus          2
+  > df[, c("gene", "organism")]
+            gene     organism
+  P04406 GAPDH    H.sapiens
+  P0CF24 FOXP2 R.norvegicus
+  > df["organism"]
+               organism
+  P04406    H.sapiens
+  P0CF24 R.norvegicus
+  > class(df["organism"])
+  [1] "data.frame"
   </pre>
 
 ---
