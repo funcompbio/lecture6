@@ -620,6 +620,22 @@ values, technically called .boldface[levels] in this context.
   [1] "character"
   </pre>
 
+---
+
+## Data frames: adding columns
+
+* You can add a column to an existing `data.frame` object in a similar way
+  in which you add an element to a list, for instance:
+  <pre>
+  > df$position <- c(6534517, 43133827)
+  > df
+          gene     organism chromosome position
+  P04406 GAPDH    H.sapiens         12  6534517
+  P0CF24 FOXP2 R.norvegicus          2 43133827
+  </pre>
+* If the column name contains other characters than letters numbers, such
+  as for instance space characters, you cannot use the `$` operator, but
+  you can use the double bracket `[[` operator in the previous assignment.
 
 ---
 
@@ -692,7 +708,7 @@ class: center, middle, inverse
 * We can subset a list using the bracket operator `[`.
   <pre>
   > l <- list(gene="ACE2", UniProt="Q9BYF1",
-            PubMedIDs=c("27217402", "11815627", "19021774"))
+                 PubMedIDs=c("27217402", "11815627", "19021774"))
   > l
   $gene
   [1] "ACE2"
