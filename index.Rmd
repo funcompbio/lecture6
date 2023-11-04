@@ -608,7 +608,7 @@ values, technically called .boldface[levels] in this context.
   [1] "H.sapiens"    "R.norvegicus"
   </pre>
 * Additionally, we can also directly access the column of a `data.frame` object
-  as if it were an element of `list`, using the `$` operator:
+  as if it were an element of a `list`, using the `$` operator:
   <pre>
   > df$organism
   [1] "H.sapiens"    "R.norvegicus"
