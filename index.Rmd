@@ -5,6 +5,7 @@
     xaringan::moon_reader:
       nature:
         beforeInit: js/macros.js
+        countIncrementalSlides: false
       self_contained: true
       css: [default, default-fonts, ninjutsu, css/upf.css]
       seal: false
@@ -33,8 +34,8 @@ class: title-slide, middle, center
 
 ## Fundamentals of Computational Biology
 ### BSc on Human Biology
-### UPF School of Health and Life Sciences
-### Academic Year 2023-2024
+### UPF School of Medicine and Life Sciences
+### Academic Year 2024-2025
 
 ---
 class: center, middle, inverse
@@ -72,8 +73,8 @@ class: center, middle, inverse
 --
 
 * A new stable version is released every year on April and development versions
-  are updated on a daily basis. The last major release (version 4.3.0) took
-  place on April, 2023.
+  are updated on a daily basis. The last major release (version 4.4.0) took
+  place on April, 2024.
 
 ---
 
@@ -98,6 +99,17 @@ class: center, middle, inverse
 * You can run R using the [RStudio](https://rstudio.com) application.
 
 ![:scale 90%](img/RStudio.png)
+
+---
+
+## Running R in a web browser
+
+* Using a recent software technology called
+  [WebAssembly](https://webassembly.org) (WASM), we can even run R in our
+  browser **without having to install anything**. Just try it at
+  https://webr.r-wasm.org/latest.
+
+![:scale 70%](img/webr.png)
 
 ---
 
@@ -367,7 +379,7 @@ can store only one data type. Single values are also considered vectors of lengt
 
 ## Vectors
 
-* Vector positions in R are 1-based, this means, .boldface[they start at position 1].
+* Vector positions in R are 1-based, this means, **they start at position 1**.
   The function `length()` provides the number of elements of the vector.
   <pre>
   > v <- 1:3
@@ -397,7 +409,7 @@ can store only one data type. Single values are also considered vectors of lengt
 * [Factors](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Factors) 
 are a special class of vectors used to categorize data and store its levels. 
 They are specially useful when the vector contains a limited number of unique 
-values, technically called .boldface[levels] in this context.
+values, technically called **levels** in this context.
   <pre>
   > sex <- c("female", "male", "male", "female", "female")
   > sex_factor <- factor(sex)
