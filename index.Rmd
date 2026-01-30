@@ -820,6 +820,6 @@ class: center, middle, inverse
 .pull-right[
 ![](img/compbiojob.png)
 .footnote[
-[Job offer for a computational biologist](https://www.indeed.com/jobs?q=Python+Unix+Linux+R&from=mobRdr&utm_source=%2Fm%2F&utm_medium=redir&utm_campaign=dt&vjk=998726a0ded4297f)
+[Job offer for a computational biologist](https://www.indeed.com/jobs?q=computational+biology+python+R+unix)
 ]
 ]
